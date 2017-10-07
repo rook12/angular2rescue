@@ -3,7 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Based on https://blog.jdriven.com/2016/12/angular2-spring-boot-getting-started/ -->
+	<!-- Based on https://blog.jdriven.com/2016/12/angular2-spring-boot-getting-started/
+
+		Angular architecture - https://angular.io/guide/architecture#templates
+	-->
 	
 	<groupId>com.crm114discriminator</groupId>
 	<artifactId>parent</artifactId>
