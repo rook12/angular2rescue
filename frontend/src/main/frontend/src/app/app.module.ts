@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
   ],
 
   //creators of services that this module contributes to the global collection of services; they become accessible in all parts of the app.
+  //Things in here can then be injected into classes that require them as dependencies (can also do in the components)
+  //Gets injected through component constructor, eg constructor(private service: HeroService) { }
   providers: [],
 
 
