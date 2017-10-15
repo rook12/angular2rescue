@@ -7,6 +7,7 @@
 
 * In IntelliJ, start Angular2rescueApplication to initiate backend
 * Angular dev server - C:\dev\angular2rescue\frontend\src\main\frontend>npm start
+* http://localhost:4200/
 
 # Next thing to do
 
