@@ -7,12 +7,14 @@ import {HellooneComponent} from "./helloone.component";
 import {AppRoutingModule} from "./app-routing.module";
 
 import {Router} from "@angular/router";
+import {UnitrootComponent} from "./unit/unitroot/unitroot.component";
 
 @NgModule({
   //the view classes that belong to this module. Angular has three kinds of view classes: components, directives, and pipes.
   declarations: [
     RescueRootAppComponent,
-    HellooneComponent
+    HellooneComponent,
+    UnitrootComponent
   ],
 
   //other modules whose exported classes are needed by component templates declared in this module.
