@@ -6,8 +6,9 @@
 # Starting up for DEV
 
 * In IntelliJ, start Angular2rescueApplication to initiate backend
-* Angular dev server - C:\dev\angular2rescue\frontend>npm start
+* Angular dev server - C:\dev\angular2rescue\frontend\src\main\frontend>npm start
 
 # Next thing to do
 
 * Routing (still to look at properly) - https://angular.io/guide/router
+* Play with implementing some sort of message handling in back end.
