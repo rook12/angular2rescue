@@ -7,3 +7,14 @@
     </li>
 </ul>
 
+  <div id="accordion" role="tablist" aria-multiselectable="true" *ngFor="let response of observableMotorsportEvents | async">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          {{response.name}}
+        </a>
+      </h5>
+  </div>
+
+
+
