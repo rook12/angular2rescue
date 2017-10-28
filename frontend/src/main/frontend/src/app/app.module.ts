@@ -12,6 +12,9 @@ import {NavbarComponent} from "./navbar/navbar.component";
 
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
+import {CrewComponent} from "./crew/crew.component";
+import {EventsComponent} from "./events/events.component";
+import {LandingComponent} from "./landing/landing.component";
 
 @NgModule({
   //the view classes that belong to this module. Angular has three kinds of view classes: components, directives, and pipes.
@@ -19,7 +22,10 @@ import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
     RescueRootAppComponent,
     HellooneComponent,
     UnitrootComponent,
-    NavbarComponent
+    NavbarComponent,
+    CrewComponent,
+    EventsComponent,
+    LandingComponent
   ],
 
   //other modules whose exported classes are needed by component templates declared in this module.
