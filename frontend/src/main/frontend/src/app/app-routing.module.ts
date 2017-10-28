@@ -3,7 +3,7 @@ import {NgModule} from "@angular/core";
 import {HellooneComponent} from "./helloone.component";
 import {UnitrootComponent} from "./unit/unitroot/unitroot.component";
 import {CrewComponent} from "./crew/crew.component";
-import {EventsComponent} from "./events/events.component";
+import {EventsComponent} from "./components/events/events.component";
 import {LandingComponent} from "./landing/landing.component";
 
 const appRoutes: Routes = [
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {
-        enableTracing: true // Debugging only
+        enableTracing: false // Debugging only
       }
     )
   ],
