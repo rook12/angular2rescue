@@ -48,16 +48,16 @@ public class MotorsportEventController {
     }
 
     @GetMapping(path="/{eventid}")
-    public @ResponseBody String getEventById(
+    public @ResponseBody MotorsportEvent getEventById(
             @PathVariable(value="eventid") String id) {
 
-        MotorsportEvent event= motorsportEventRepository.findByName(id);
-        if(event == null) {
+        return motorsportEventRepository.findById(Integer.parseInt(id));
+        /*if(event == null) {
             return "no match for - " + id;
         }
         else {
             return "the ID was - " + event.toString();
-        }
+        }*/
 
     }
 

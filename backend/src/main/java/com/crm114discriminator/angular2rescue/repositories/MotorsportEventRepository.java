@@ -12,5 +12,7 @@ public interface MotorsportEventRepository extends PagingAndSortingRepository<Mo
 
     MotorsportEvent findByName(String name);
 
+    MotorsportEvent findById(Integer id);
+
     Page<MotorsportEvent> findAll(Pageable pageable);
 }
