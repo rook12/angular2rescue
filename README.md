@@ -14,6 +14,7 @@
 
 # Next thing to do
 
+* Last thing done 30-10-17. Implemented HATEOAS links. Add link to front end representation not use API, so I can go to a page for each entry
 * Routing (still to look at properly) - https://angular.io/guide/router
 * Play with implementing some sort of message handling in back end.
 * Securing pages / Login system
