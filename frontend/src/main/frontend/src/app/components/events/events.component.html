@@ -1,8 +1,12 @@
 <h1>Event component</h1>
 <div *ngIf="errorMessage"> {{errorMessage}} </div>
-<p>Length : {{motorsportEvents.length}}</p>
+
+<!-- Leaving count out for now as its throwing error in the console, as its not been initialised yet
+<p>Length : {{motorsportEvents.length}}</p>-->
+
 <ul>
     <li *ngFor="let response of observableMotorsportEvents | async">
+      <a href="{{response.links[0].href}}">Link</a>
       Property: {{response.name}} {{response.crewRequired}} {{response.unitsRequired}} {{response.startDate}} {{response.endDate}}
     </li>
 </ul>
@@ -10,7 +14,7 @@
   <div id="accordion" role="tablist" aria-multiselectable="true" *ngFor="let response of observableMotorsportEvents | async">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <a data-toggle="collapse" data-parent="#accordion" href="{{response.links[0].href}}" aria-expanded="true" aria-controls="collapseOne">
           {{response.name}}
         </a>
       </h5>

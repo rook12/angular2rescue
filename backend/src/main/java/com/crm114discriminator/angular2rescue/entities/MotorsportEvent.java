@@ -1,5 +1,7 @@
 package com.crm114discriminator.angular2rescue.entities;
 
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.List;
  * Created by Steve on 22/09/2017.
  */
 @Entity
-public class MotorsportEvent {
+public class MotorsportEvent extends ResourceSupport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +28,10 @@ public class MotorsportEvent {
     @ElementCollection
     @CollectionTable(name = "crewAssigned")
     private List<CrewMember> crewAssigned;
+
+    public Integer getMotorsportEventId() {
+        return id;
+    }
 
     public String getName() {
         return name;

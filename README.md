@@ -3,6 +3,8 @@
 * Based on https://blog.jdriven.com/2016/12/angular2-spring-boot-getting-started/
 * Angular architecture - https://angular.io/guide/architecture#templates
 * Routing - https://angular.io/guide/router
+* HATEOAS API linking - http://www.baeldung.com/spring-hateoas-tutorial
+* Angular HTTP GET - https://www.concretepage.com/angular-2/angular-2-http-get-example
 
 # Starting up for DEV
 
@@ -37,8 +39,6 @@ Alternately, use ng-bootstrap designed specifically for Angular
 
 npm install --save @ng-bootstrap/ng-bootstrap
 npm install bootstrap@4.0.0-alpha.6
-
-
 
 ## Debugging
 

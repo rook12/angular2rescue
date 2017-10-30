@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {Motorsportevent} from "./motorsportevent";
+//import {MotorsportEvent} from "./motorsportevent";
 import {MotorsporteventService} from "../../services/motorsportevent/motorsportevent.service";
 
 /*Example for subscribing to new events being added
@@ -15,8 +15,8 @@ export class EventsComponent implements OnInit {
 
   constructor(private motorSportEventService: MotorsporteventService) { }
 
-  observableMotorsportEvents: Observable<Motorsportevent[]>;
-  motorsportEvents: Motorsportevent[];
+  observableMotorsportEvents: Observable<MotorsportEvent[]>;
+  motorsportEvents: MotorsportEvent[];
   errorMessage: String;
 
   ngOnInit() {
@@ -27,4 +27,19 @@ export class EventsComponent implements OnInit {
     );
   }
 
+}
+
+//Doesn't seem to be strictly necessary but it seems to help the intelli sense so it knows what the json should look like
+
+export class MotorsportEvent {
+  id: number;
+  name: string;
+  unitsRequired: number;
+  crewRequired: number;
+  startDate: Date;
+  endDate: Date;
+  links: Object[];
+
+  constructor() {
+  }
 }

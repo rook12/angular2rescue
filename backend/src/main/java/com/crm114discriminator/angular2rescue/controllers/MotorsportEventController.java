@@ -4,11 +4,14 @@ import com.crm114discriminator.angular2rescue.entities.MotorsportEvent;
 import com.crm114discriminator.angular2rescue.repositories.MotorsportEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * Created by Steve on 22/09/2017.
@@ -44,20 +47,24 @@ public class MotorsportEventController {
 
     @GetMapping(path="/list")
     public @ResponseBody  Iterable<MotorsportEvent> list() {
-        return motorsportEventRepository.findAll();
+        Iterable<MotorsportEvent> motorsportEvents = motorsportEventRepository.findAll();
+
+        for (MotorsportEvent motorsportEvent : motorsportEvents) {
+            motorsportEvent.add(linkTo(MotorsportEventController.class).slash(motorsportEvent.getMotorsportEventId()).withSelfRel());
+        }
+
+        return motorsportEvents;
     }
 
     @GetMapping(path="/{eventid}")
     public @ResponseBody MotorsportEvent getEventById(
             @PathVariable(value="eventid") String id) {
 
-        return motorsportEventRepository.findById(Integer.parseInt(id));
-        /*if(event == null) {
-            return "no match for - " + id;
-        }
-        else {
-            return "the ID was - " + event.toString();
-        }*/
+        MotorsportEvent motorsportEvent = motorsportEventRepository.findById(Integer.parseInt(id));
+        Link link = linkTo(MotorsportEventController.class).slash(motorsportEvent.getMotorsportEventId()).withSelfRel();
+        motorsportEvent.add(link);
+
+        return motorsportEvent;
 
     }
 
