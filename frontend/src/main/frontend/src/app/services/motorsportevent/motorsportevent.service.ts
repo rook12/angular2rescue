@@ -10,6 +10,10 @@ export class MotorsporteventService {
 
   constructor(private http:Http) {}
 
+  getEventById(eventId: string): Observable<Object> {
+    return this.http.get("/api/event/" + eventId).map(( res: Response ) => res.json());
+  }
+
   getEventsWithObservable(): Observable<MotorsportEvent[]> {
     return this.http.get("/api/event/list" )
       .map(this.extractData);
