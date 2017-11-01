@@ -15,10 +15,20 @@ public class MotorsportEvent extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+//    @JsonProperty("event_name")
     private String name;
+
+//    @JsonProperty("units_required")
     private Integer unitsRequired;
+
+//    @JsonProperty("crew_required")
     private Integer crewRequired;
+
+//    @JsonProperty("start_date")
     private Date startDate;
+
+//    @JsonProperty("end_date")
     private Date endDate;
 
     @ElementCollection

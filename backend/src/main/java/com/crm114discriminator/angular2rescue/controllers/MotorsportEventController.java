@@ -65,7 +65,25 @@ public class MotorsportEventController {
         motorsportEvent.add(link);
 
         return motorsportEvent;
+    }
 
+    @PostMapping(path="/{eventid}")
+    public @ResponseBody MotorsportEvent updateEvent(
+            @RequestBody MotorsportEvent motorsportEvent,
+            @PathVariable(value="eventid") String id) {
+
+
+        //MotorsportEvent motorsportEvent = motorsportEventRepository.findById(Integer.parseInt(id));
+
+        String one = "1";
+        String one2 = "2";
+
+        MotorsportEvent motorsportEvent1 = motorsportEventRepository.findById(Integer.parseInt(id));
+        motorsportEventRepository.
+
+
+        //motorsportEventRepository.save(motorsportEvent);
+        return motorsportEventRepository.findById(Integer.parseInt(id));
     }
 
     @PostMapping(path="/add")
