@@ -39,6 +39,7 @@ export class MotorsportEvent {
   startDate: Date;
   endDate: Date;
   links: Object[];
+  motorsportEventId: number;
 
   constructor() {
   }

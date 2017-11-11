@@ -6,7 +6,9 @@
 
 <ul>
     <li *ngFor="let response of observableMotorsportEvents | async">
-      <a href="{{response.links[0].href}}">Link</a>
+
+      <!--<a routerLink="/units" class="nav-link" routerLinkActive="active">Units</a>-->
+      <a routerLink="/event-detail/{{response.motorsportEventId}}">Link</a>
       Property: {{response.name}} {{response.crewRequired}} {{response.unitsRequired}} {{response.startDate}} {{response.endDate}}
     </li>
 </ul>

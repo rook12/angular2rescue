@@ -62,6 +62,7 @@ public class MotorsportEventController {
 
         MotorsportEvent motorsportEvent = motorsportEventRepository.findById(Integer.parseInt(id));
         Link link = linkTo(MotorsportEventController.class).slash(motorsportEvent.getMotorsportEventId()).withSelfRel();
+
         motorsportEvent.add(link);
 
         return motorsportEvent;
@@ -79,7 +80,6 @@ public class MotorsportEventController {
         String one2 = "2";
 
         MotorsportEvent motorsportEvent1 = motorsportEventRepository.findById(Integer.parseInt(id));
-        motorsportEventRepository.
 
 
         //motorsportEventRepository.save(motorsportEvent);
