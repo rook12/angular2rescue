@@ -3,6 +3,7 @@ import {MotorsporteventService} from "../../services/motorsportevent/motorsporte
 import {MotorsportEvent} from "../events/events.component";
 import {Observable} from "rxjs/Observable";
 import {ActivatedRoute} from "@angular/router";
+import {DataGridModule} from 'primeng/primeng';
 
 @Component({
   selector: 'app-eventdetail',

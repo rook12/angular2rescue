@@ -48,6 +48,10 @@ https://github.com/mrin9/Angular-SpringBoot-REST-JWT
 
 Adding dependency org.springframework.boot:spring-boot-starter-security automatically throws up 401
 
+## Data
+
+Many to many relationships - https://vladmihalcea.com/2017/05/10/the-best-way-to-use-the-manytomany-annotation-with-jpa-and-hibernate/
+
 ## Debugging
 
 If something stops working after a change, check the browser console log

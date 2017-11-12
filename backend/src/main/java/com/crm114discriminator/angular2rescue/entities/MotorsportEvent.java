@@ -42,7 +42,9 @@ public class MotorsportEvent extends ResourceSupport {
     })
     @JoinTable(name = "event_crew",
             joinColumns = @JoinColumn(name = "event_id"),
-            inverseJoinColumns = @JoinColumn(name = "crew_member_id")
+            inverseJoinColumns = @JoinColumn(name = "crew_member_id"),
+            //Need to have unique constaint on both columns. A crew member can only attend an event instance once, but they can attend more than one event
+            uniqueConstraints =@UniqueConstraint(columnNames ={"event_id","crew_member_id"})
     )
     private List<CrewMember> crew;
 

@@ -13,4 +13,12 @@ call curl -d "firstName=Kev&lastName=Bloggs&phoneNumber=01226775996&licenseNumbe
 call curl -d "firstName=Ross&lastName=Logan&phoneNumber=07922256831&licenseNumber=11458" -X POST http://localhost:8080/api/crew/add
 call curl -d "firstName=Iain&lastName=Smith&phoneNumber=07933356987&licenseNumber=335689" -X POST http://localhost:8080/api/crew/add
 call curl -d "firstName=Stewart&lastName=Burns&phoneNumber=07633598855&licenseNumber=11257" -X POST http://localhost:8080/api/crew/add
+curl -d "crewMemberId=1" -X POST http://localhost:8080/api/event/1/crew/add
+curl -d "crewMemberId=2" -X POST http://localhost:8080/api/event/1/crew/add
+curl -d "crewMemberId=3" -X POST http://localhost:8080/api/event/1/crew/add
+curl -d "crewMemberId=4" -X POST http://localhost:8080/api/event/1/crew/add
+curl -d "crewMemberId=4" -X POST http://localhost:8080/api/event/2/crew/add
+curl -d "crewMemberId=1" -X POST http://localhost:8080/api/event/2/crew/add
+curl -d "crewMemberId=4" -X POST http://localhost:8080/api/event/3/crew/add
+curl -d "crewMemberId=5" -X POST http://localhost:8080/api/event/3/crew/add
 exit 0
