@@ -1,6 +1,8 @@
 package com.crm114discriminator.angular2rescue.controllers;
 
+import com.crm114discriminator.angular2rescue.entities.CrewMember;
 import com.crm114discriminator.angular2rescue.entities.MotorsportEvent;
+import com.crm114discriminator.angular2rescue.repositories.CrewMemberRepository;
 import com.crm114discriminator.angular2rescue.repositories.MotorsportEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,11 +22,14 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 @RequestMapping(path="/api/event")
 public class MotorsportEventController {
 
+    private CrewMemberRepository crewMemberRepository;
+
     private MotorsportEventRepository motorsportEventRepository;
 
     @Autowired
-    public MotorsportEventController(MotorsportEventRepository motorsportEventRepository) {
+    public MotorsportEventController(MotorsportEventRepository motorsportEventRepository, CrewMemberRepository crewMemberRepository) {
         this.motorsportEventRepository = motorsportEventRepository;
+        this.crewMemberRepository = crewMemberRepository;
     }
 
     @GetMapping(path="/search")
@@ -66,6 +71,28 @@ public class MotorsportEventController {
         motorsportEvent.add(link);
 
         return motorsportEvent;
+    }
+
+    @GetMapping(path="/{eventid}/crew")
+    public @ResponseBody Iterable<CrewMember> getEventCrewMembers(
+            @PathVariable(value="eventid") String id) {
+        MotorsportEvent motorsportEvent = motorsportEventRepository.findById(Integer.parseInt(id));
+        return motorsportEvent.getCrew();
+    }
+
+    @PostMapping(path="/{eventid}/crew/add")
+    public @ResponseBody String addCrewMember(
+            @PathVariable(value="eventid") String id,
+            @RequestParam Integer crewMemberId) {
+        MotorsportEvent motorsportEvent = motorsportEventRepository.findById(Integer.parseInt(id));
+        CrewMember cm = crewMemberRepository.findById(crewMemberId);
+        if (cm == null) {
+            throw new IllegalArgumentException("could not find crew member with id "  + crewMemberId);
+        }
+
+        motorsportEvent.addCrewMember(cm);
+        motorsportEventRepository.save(motorsportEvent);
+        return String.format("added crew member with id - %s. total crew members - %s", crewMemberId, motorsportEvent.getCrew().size() );
     }
 
     @PostMapping(path="/{eventid}")

@@ -16,6 +16,17 @@ public class ApplicationStartup
      */
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
+        //Class.forName("org.h2.Driver");
+
+        /*try {
+            Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+            Statement statement = conn.createStatement();
+            statement.execute("drop all objects");
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+
         //Call the batch script in the cmd shell, trying to invoke it directly only executes 12 commands before hanging
         try {
             Process p = new ProcessBuilder("cmd", "/c", "", "start", "C:\\dev\\angular2rescue\\backend\\bin\\populateDb.bat").start();

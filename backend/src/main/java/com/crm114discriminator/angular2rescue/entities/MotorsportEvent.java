@@ -10,6 +10,7 @@ import java.util.List;
  * Created by Steve on 22/09/2017.
  */
 @Entity
+@Table(name="event")
 public class MotorsportEvent extends ResourceSupport {
 
     @Id
@@ -31,13 +32,27 @@ public class MotorsportEvent extends ResourceSupport {
 //    @JsonProperty("end_date")
     private Date endDate;
 
-    @ElementCollection
+   /* @ElementCollection
     @CollectionTable(name = "unitsAssigned")
-    private List<RescueUnit> unitsAssigned;
+    private List<RescueUnit> unitsAssigned;*/
 
-    @ElementCollection
-    @CollectionTable(name = "crewAssigned")
-    private List<CrewMember> crewAssigned;
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "event_crew",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "crew_member_id")
+    )
+    private List<CrewMember> crew;
+
+    public List<CrewMember> getCrew() {
+        return crew;
+    }
+
+    public void addCrewMember(CrewMember crewMember) {
+        this.crew.add(crewMember);
+    }
 
     public Integer getMotorsportEventId() {
         return id;

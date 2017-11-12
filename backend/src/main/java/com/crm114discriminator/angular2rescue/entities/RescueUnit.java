@@ -1,7 +1,9 @@
 package com.crm114discriminator.angular2rescue.entities;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by Steve on 22/09/2017.
@@ -40,13 +42,13 @@ public class RescueUnit {
         this.registration = registration;
     }
 
-    @ElementCollection
+    /*@ElementCollection
     @CollectionTable(name="pastMotorsportEvents")
     private List<MotorsportEvent> pastMotorsportEvents;
 
     @ElementCollection
     @CollectionTable(name="plannedMotorsportEvents")
-    private List<MotorsportEvent> plannedMotorsportEvents;
+    private List<MotorsportEvent> plannedMotorsportEvents;*/
 
     @Override
     public String toString() {

@@ -10,4 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface CrewMemberRepository extends PagingAndSortingRepository<CrewMember, Long> {
     Page<CrewMember> findAll(Pageable pageable);
+
+    CrewMember findById(Integer id);
 }

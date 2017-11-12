@@ -2,15 +2,15 @@ package com.crm114discriminator.angular2rescue.entities;
 
 import org.springframework.hateoas.ResourceSupport;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Steve on 22/09/2017.
  */
 @Entity
+@Table(name="crew")
 public class CrewMember extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +21,10 @@ public class CrewMember extends ResourceSupport {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+
+    //mappedBy eventCrew - eventCrew is the name of the variable in the MotorsportEvent class in this relationship
+    @ManyToMany(mappedBy="crew")
+    private List<MotorsportEvent> motorsportEvents = new ArrayList<>();
 
     public Integer getCrewMemberId() {
         return id;
