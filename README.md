@@ -42,6 +42,12 @@ Alternately, use ng-bootstrap designed specifically for Angular
 npm install --save @ng-bootstrap/ng-bootstrap
 npm install bootstrap@4.0.0-alpha.6
 
+## Security
+
+https://github.com/mrin9/Angular-SpringBoot-REST-JWT
+
+Adding dependency org.springframework.boot:spring-boot-starter-security automatically throws up 401
+
 ## Debugging
 
 If something stops working after a change, check the browser console log

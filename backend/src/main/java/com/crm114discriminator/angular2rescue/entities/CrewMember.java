@@ -1,5 +1,7 @@
 package com.crm114discriminator.angular2rescue.entities;
 
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.persistence.Id;
  * Created by Steve on 22/09/2017.
  */
 @Entity
-public class CrewMember {
+public class CrewMember extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -20,7 +22,7 @@ public class CrewMember {
     private String lastName;
     private String phoneNumber;
 
-    public Integer getId() {
+    public Integer getCrewMemberId() {
         return id;
     }
 

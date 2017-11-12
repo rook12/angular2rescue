@@ -5,6 +5,9 @@
 <h2>
   <p>Start  - {{motorsportEvent?.startDate | date}}</p>
   <p>Finish - {{motorsportEvent?.endDate | date}}</p>
-  <p>Units required -  {{motorsportEvent.unitsRequired}}</p>
-  <p>Crew required - {{motorsportEvent.crewRequired}}</p>
+  <p>Units required -  {{motorsportEvent?.unitsRequired}}</p>
+  <p>Crew required - {{motorsportEvent?.crewRequired}}</p>
 </h2>
+<button [routerLink]="'/events'" type="submit" class="btn btn-primary" >
+  Back to Events
+</button>

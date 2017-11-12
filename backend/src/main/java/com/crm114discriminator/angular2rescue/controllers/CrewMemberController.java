@@ -4,16 +4,15 @@ import com.crm114discriminator.angular2rescue.entities.CrewMember;
 import com.crm114discriminator.angular2rescue.repositories.CrewMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * Created by Steve on 22/09/2017.
  */
 @Controller
-@RequestMapping(path="/crew")
+@RequestMapping(path="/api/crew")
 public class CrewMemberController {
     @Autowired
     private CrewMemberRepository crewMemberRepository;
@@ -35,5 +34,15 @@ public class CrewMemberController {
         return crewMember.toString();
     }
 
+    @GetMapping(path="/list")
+    public @ResponseBody  Iterable<CrewMember> list() {
+        Iterable<CrewMember> crewMembers = crewMemberRepository.findAll();
+
+        for (CrewMember crewMember: crewMembers) {
+            crewMember.add(linkTo(MotorsportEventController.class).slash(crewMember.getCrewMemberId()).withSelfRel());
+        }
+
+        return crewMembers;
+    }
 
 }
