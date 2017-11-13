@@ -17,6 +17,7 @@ import {LandingComponent} from "./landing/landing.component";
 import {HttpModule} from "@angular/http";
 import {MotorsporteventService} from "./services/motorsportevent/motorsportevent.service";
 import { EventdetailComponent } from './components/eventdetail/eventdetail.component';
+import { EventeditComponent } from './components/eventedit/eventedit.component';
 
 @NgModule({
   //the view classes that belong to this module. Angular has three kinds of view classes: components, directives, and pipes.
@@ -28,7 +29,8 @@ import { EventdetailComponent } from './components/eventdetail/eventdetail.compo
     CrewComponent,
     EventsComponent,
     LandingComponent,
-    EventdetailComponent
+    EventdetailComponent,
+    EventeditComponent
   ],
 
   //other modules whose exported classes are needed by component templates declared in this module.

@@ -6,6 +6,7 @@ import {CrewComponent} from "./crew/crew.component";
 import {EventsComponent} from "./components/events/events.component";
 import {LandingComponent} from "./landing/landing.component";
 import {EventdetailComponent} from "./components/eventdetail/eventdetail.component";
+import {EventeditComponent} from "./components/eventedit/eventedit.component";
 
 const appRoutes: Routes = [
   {  path: 'hello-one',  component: HellooneComponent, data: {authorname: 'steveoo'}},
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
   { path:'crew', component:CrewComponent},
   { path:'events', component:EventsComponent},
   { path:'event-detail/:id', component:EventdetailComponent},
+  { path:'event-edit/:id', component:EventeditComponent},
   { path: '', component:LandingComponent}
 ];
 

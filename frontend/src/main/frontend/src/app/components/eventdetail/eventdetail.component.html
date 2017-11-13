@@ -2,6 +2,14 @@
 <h1>
   {{motorsportEvent?.name}}
 </h1>
+<hr/>
+<button routerLink="/event-edit/{{eventId}}" type="submit" class="btn btn-primary" >
+  Edit
+</button>
+<button [routerLink]="'/events'" type="submit" class="btn btn-primary" >
+  Back to Events
+</button>
+<hr/>
   <p>Start  - {{motorsportEvent?.startDate | date}}</p>
   <p>Finish - {{motorsportEvent?.endDate | date}}</p>
   <p>Units required -  {{motorsportEvent?.unitsRequired}}</p>
@@ -20,6 +28,4 @@
     </div>
   </ng-template>
 </p-dataGrid>-->
-<button [routerLink]="'/events'" type="submit" class="btn btn-primary" >
-  Back to Events
-</button>
+
