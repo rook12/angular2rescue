@@ -21,4 +21,6 @@ curl -d "crewMemberId=4" -X POST http://localhost:8080/api/event/2/crew/add
 curl -d "crewMemberId=1" -X POST http://localhost:8080/api/event/2/crew/add
 curl -d "crewMemberId=4" -X POST http://localhost:8080/api/event/3/crew/add
 curl -d "crewMemberId=5" -X POST http://localhost:8080/api/event/3/crew/add
+REM Update event name
+REM curl -d "{\"id\":\"1\", \"name\":\"event1\"}" -H "Content-Type: application/json" -X PUT http://localhost:8080/api/event/1
 exit 0

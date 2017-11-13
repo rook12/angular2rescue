@@ -2,12 +2,17 @@
 <h1>
   {{motorsportEvent?.name}}
 </h1>
-<h2>
   <p>Start  - {{motorsportEvent?.startDate | date}}</p>
   <p>Finish - {{motorsportEvent?.endDate | date}}</p>
   <p>Units required -  {{motorsportEvent?.unitsRequired}}</p>
   <p>Crew required - {{motorsportEvent?.crewRequired}}</p>
-</h2>
+
+  <ul>
+    <li *ngFor="let crewMember of motorsportEvent?.crew">
+      <p>{{crewMember.firstName}} {{crewMember.lastName}}</p>
+    </li>
+
+  </ul>
 <!--<p-dataGrid [value]="cars">
   <ng-template let-car pTemplate="item">
     <div class="ui-g-12 ui-md-3">

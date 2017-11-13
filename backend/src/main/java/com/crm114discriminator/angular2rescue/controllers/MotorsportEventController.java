@@ -8,10 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
@@ -80,8 +84,40 @@ public class MotorsportEventController {
         return motorsportEvent.getCrew();
     }
 
+    @PutMapping(path="/{eventid}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateMotorsportEvent(
+            @RequestBody MotorsportEvent motorsportEvent, @PathVariable("eventid") String id) {
+
+        MotorsportEvent existingEvent = motorsportEventRepository.findById(Integer.parseInt(id));
+
+        List<String> updatedFields = new ArrayList<>();
+
+        if(motorsportEvent.getName() != null && !motorsportEvent.getName().equals(existingEvent.getName())) {
+            existingEvent.setName(motorsportEvent.getName());
+            updatedFields.add("name");
+        }
+
+        if(updatedFields.size() > 0) {
+            motorsportEventRepository.save(motorsportEvent);
+            return ResponseEntity.ok(String.format("event updated fields [%s] ", String.join(", ", updatedFields)));
+        }
+        else {
+            return ResponseEntity.ok("no changes detected");
+        }
+
+
+    }
+
+   /* @PatchMapping(path="/{eventid}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> partialUpdateName(
+            @RequestBody MotorsportEventNameOnly partialUpdate, @PathVariable("eventid") String id) {
+        motorsportEventRepository.save(partialUpdate);
+        return ResponseEntity.ok("event name updated");
+    }*/
+
+
     @PostMapping(path="/{eventid}/crew/add")
-    public @ResponseBody String addCrewMember(
+    public ResponseEntity<?> addCrewMember(
             @PathVariable(value="eventid") String id,
             @RequestParam Integer crewMemberId) {
         MotorsportEvent motorsportEvent = motorsportEventRepository.findById(Integer.parseInt(id));
@@ -92,7 +128,7 @@ public class MotorsportEventController {
 
         motorsportEvent.addCrewMember(cm);
         motorsportEventRepository.save(motorsportEvent);
-        return String.format("added crew member with id - %s. total crew members - %s", crewMemberId, motorsportEvent.getCrew().size() );
+        return ResponseEntity.ok(String.format("added crew member with id - %s. total crew members - %s", crewMemberId, motorsportEvent.getCrew().size() ));
     }
 
     @PostMapping(path="/{eventid}")
