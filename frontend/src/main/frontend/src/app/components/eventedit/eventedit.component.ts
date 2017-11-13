@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MotorsportEvent} from "../events/events.component";
 
 @Component({
   selector: 'app-eventedit',
@@ -8,6 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class EventeditComponent implements OnInit {
 
   constructor() { }
+
+  submitted = false;
+
+  //model = new MotorsportEvent();
+
+  onSubmit() {this.submitted = true; }
+
+  //get diagnostic() { return JSON.stringify(this.model)}
+
 
   ngOnInit() {
   }

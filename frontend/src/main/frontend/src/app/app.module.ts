@@ -18,6 +18,7 @@ import {HttpModule} from "@angular/http";
 import {MotorsporteventService} from "./services/motorsportevent/motorsportevent.service";
 import { EventdetailComponent } from './components/eventdetail/eventdetail.component';
 import { EventeditComponent } from './components/eventedit/eventedit.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   //the view classes that belong to this module. Angular has three kinds of view classes: components, directives, and pipes.
@@ -39,7 +40,8 @@ import { EventeditComponent } from './components/eventedit/eventedit.component';
     AppRoutingModule,
     NgbModule.forRoot(),
     NgbCollapseModule.forRoot(),
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
 
   //creators of services that this module contributes to the global collection of services; they become accessible in all parts of the app.
@@ -56,7 +58,7 @@ export class AppModule {
 
   //Debugging routing issues
   constructor(router : Router) {
-    console.log('Routes - : ', JSON.stringify(router.config) )
+    //console.log('Routes - : ', JSON.stringify(router.config) )
   }
 
 }
