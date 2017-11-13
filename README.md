@@ -14,6 +14,7 @@
 
 # Next thing to do
 
+* 13-11-17 Wire up event editor screen
 * 12-11-17 Crew members attached to an event, pull them into the front end and display them for each event
 * 01-11-17 - Look at link for implementing CRUD front/backend integration - http://javasampleapproach.com/spring-framework/spring-boot/use-angular-httpclient-post-put-delete-data-springboot-rest-apis-angular-4#1_Implement_new_CreateCustomerComponent
 * Last thing done 30-10-17. Implemented HATEOAS links. Add link to front end representation not use API, so I can go to a page for each entry
