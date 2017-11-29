@@ -1,24 +1,53 @@
 <!--<p>
   eventedit works!
+
+  https://angular.io/guide/template-syntax
+
+  [()] - two way binding
+
 </p>-->
 <div class="container">
-  <h1>Hero Form</h1>
-  <form>
+  <h1>Edit Event</h1>
+  <form #eventEditForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name"
              required
-             [(ngModel)]="model.name" name="name">
+             [(ngModel)]="motorsportEvent.name" name="name">
       <br/>
-      <p>TODO: remove this: {{model.name}}</p>
+      <p>TODO: remove this: {{motorsportEvent.name}}</p>
     </div>
 
     <div class="form-group">
-      <label for="alterEgo">Alter Ego</label>
-      <input type="text" class="form-control" id="alterEgo">
+      <label for="unitsRequired">Units required</label>
+      <input type="number" class="form-control" id="unitsRequired"
+             required
+             [(ngModel)]="motorsportEvent.unitsRequired" name="unitsRequired">
+      <br/>
+      <p>TODO: remove this: {{motorsportEvent.unitsRequired}}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="crewRequired">Crew required</label>
+      <input type="number" class="form-control" id="crewRequired"
+             required
+             [(ngModel)]="motorsportEvent.crewRequired" name="crewRequired">
+      <br/>
+      <p>TODO: remove this: {{motorsportEvent.crewRequired}}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="rescueunit">Unit selection</label>
+      <select class="form-control" id="rescueunit" required>
+        <option *ngFor="let unit of rescueUnits" [value]="unit">{{unit}}</option>
+      </select>
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
+
+     <button routerLink="/event-detail/{{eventId}}" type="submit" class="btn btn-primary" >
+       Cancel
+     </button>
 
   </form>
 </div>

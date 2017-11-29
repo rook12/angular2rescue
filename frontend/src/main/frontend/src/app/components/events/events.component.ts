@@ -43,4 +43,8 @@ export class MotorsportEvent {
 
   constructor() {
   }
+
+  /*setName(name: string) {
+    this.name = name;
+  }*/
 }
