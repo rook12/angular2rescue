@@ -27,7 +27,10 @@ export class EventeditComponent implements OnInit {
   eventId: string;
 
 
-  onSubmit() {this.submitted = true; }
+  onSubmit() {
+    this.submitted = true;
+    console.log(">>>>>>>>>>>>Submitted!")
+  }
 
   //get diagnostic() { return JSON.stringify(this.motorsportEvent)}
 

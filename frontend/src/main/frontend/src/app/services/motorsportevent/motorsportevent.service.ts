@@ -14,6 +14,10 @@ export class MotorsporteventService {
     return this.http.get("/api/event/" + eventId).map(( res: Response ) => res.json());
   }
 
+  updateEvent(eventId: string, motorsportEvent: MotorsportEvent) {
+
+  }
+
   getEventsWithObservable(): Observable<MotorsportEvent[]> {
     return this.http.get("/api/event/list" )
       .map(this.extractData);

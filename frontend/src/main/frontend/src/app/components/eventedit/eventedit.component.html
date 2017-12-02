@@ -8,13 +8,20 @@
 </p>-->
 <div class="container">
   <h1>Edit Event</h1>
-  <form #eventEditForm="ngForm">
+  <!--Bind the form's ngSubmit to the onSubmit method-->
+  <form #eventEditForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name"
              required
-             [(ngModel)]="motorsportEvent.name" name="name">
+             [(ngModel)]="motorsportEvent.name" name="name"
+      #name="ngModel">
       <br/>
+      <div [hidden]="name.valid || name.pristine"
+           class="alert alert-danger">
+        Name is required
+      </div>
+
       <p>TODO: remove this: {{motorsportEvent.name}}</p>
     </div>
 
@@ -43,7 +50,7 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!eventEditForm.form.valid">Submit</button>
 
      <button routerLink="/event-detail/{{eventId}}" type="submit" class="btn btn-primary" >
        Cancel

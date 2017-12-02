@@ -14,6 +14,7 @@
 
 # Next thing to do
 
+* 02-12-17 Got to submit stage, create a unit test for the Angular service that will do the update
 * 29-11-17 Did some wiring around the event editor. Make the submit button work and talk to spring boot backend for update
 * 13-11-17 Wire up event editor screen
 * 12-11-17 Crew members attached to an event, pull them into the front end and display them for each event
