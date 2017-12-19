@@ -4,6 +4,8 @@ import {MotorsportEvent} from "../events/events.component";
 import {Observable} from "rxjs/Observable";
 import {ActivatedRoute} from "@angular/router";
 import {DataGridModule} from 'primeng/primeng';
+import {Response} from "@angular/http";
+import {reject} from "q";
 
 @Component({
   selector: 'app-eventdetail',
@@ -11,6 +13,12 @@ import {DataGridModule} from 'primeng/primeng';
   styleUrls: ['./eventdetail.component.css']
 })
 export class EventdetailComponent implements OnInit {
+  ngOnInit(): void {
+    //throw new Error("Method not implemented.");
+  }
+
+  motorsportEvent: Promise<MotorsportEvent>;
+  eventId: string;
 
   constructor(private motorSportEventService: MotorsporteventService, private route: ActivatedRoute) {
     this.route
@@ -19,21 +27,16 @@ export class EventdetailComponent implements OnInit {
         this.eventId = params['id']
       });
 
-  }
+      this.motorsportEvent = this.motorSportEventService.getEventById(this.eventId)
+        .then((res: Response) => res.json());
 
-  errorMessage: String;
-  observableMotorsportEvent: Observable<Object>;
-  motorsportEvent: Object;
+      /*
+      this.motorsportEvent = new Promise(((resolve, reject) => {
+        setTimeout(()=> resolve("COMPLETE!"), 3000);
+      }))*/
 
-  eventId: string;
-
-  ngOnInit() {
-    this.observableMotorsportEvent = this.motorSportEventService.getEventById(this.eventId);
-    this.observableMotorsportEvent.subscribe(
-      resp => this.motorsportEvent = resp,
-      error => this.errorMessage = <any>error
-    )
-
+      /*.then((res: Response) =>
+        res.json());*/
   }
 
 }

@@ -29,6 +29,9 @@ export class EventeditComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+
+    this.motorSportEventService.updateEvent(this.eventId, this.motorsportEvent);
+
     console.log(">>>>>>>>>>>>Submitted!")
   }
 
@@ -52,11 +55,11 @@ export class EventeditComponent implements OnInit {
 
 
   ngOnInit() {
-    this.observableMotorsportEvent = this.motorSportEventService.getEventById(this.eventId);
+   /* this.observableMotorsportEvent = this.motorSportEventService.getEventById(this.eventId);
     this.observableMotorsportEvent.subscribe(
       resp => this.motorsportEvent = resp,
       error => this.errorMessage = <any>error
-    )
+    )*/
   }
 
 }

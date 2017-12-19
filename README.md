@@ -14,6 +14,7 @@
 
 # Next thing to do
 
+* 03-12-17 Work on getting NPM/JS debugger to work. Connection refused. Read into using promises instead of observable to simplify things
 * 02-12-17 Got to submit stage, create a unit test for the Angular service that will do the update
 * 29-11-17 Did some wiring around the event editor. Make the submit button work and talk to spring boot backend for update
 * 13-11-17 Wire up event editor screen

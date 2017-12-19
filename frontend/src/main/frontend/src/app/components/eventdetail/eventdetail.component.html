@@ -1,7 +1,8 @@
 <!--Elvis operator ?-->
 <h1>
-  {{motorsportEvent?.name}}
+  {{ (motorsportEvent | async)?.name }}
 </h1>
+
 <hr/>
 <button routerLink="/event-edit/{{eventId}}" type="submit" class="btn btn-primary" >
   Edit
@@ -10,17 +11,19 @@
   Back to Events
 </button>
 <hr/>
-  <p>Start  - {{motorsportEvent?.startDate | date}}</p>
-  <p>Finish - {{motorsportEvent?.endDate | date}}</p>
-  <p>Units required -  {{motorsportEvent?.unitsRequired}}</p>
-  <p>Crew required - {{motorsportEvent?.crewRequired}}</p>
+  <p>Start  - {{(motorsportEvent | async)?.startDate | date}}</p>
+  <p>Finish - {{(motorsportEvent | async)?.endDate | date}}</p>
+  <p>Units required -  {{(motorsportEvent | async)?.unitsRequired}}</p>
+  <p>Crew required - {{(motorsportEvent | async)?.crewRequired}}</p>
 
   <ul>
-    <li *ngFor="let crewMember of motorsportEvent?.crew">
+    <li *ngFor="let crewMember of (motorsportEvent | async)?.crew">
       <p>{{crewMember.firstName}} {{crewMember.lastName}}</p>
     </li>
 
   </ul>
+
+
 <!--<p-dataGrid [value]="cars">
   <ng-template let-car pTemplate="item">
     <div class="ui-g-12 ui-md-3">
