@@ -14,7 +14,8 @@ import {reject} from "q";
 })
 export class EventdetailComponent implements OnInit {
   ngOnInit(): void {
-    //throw new Error("Method not implemented.");
+    this.motorsportEvent = this.motorSportEventService.getEventById(this.eventId)
+      .then((res: Response) => res.json());
   }
 
   motorsportEvent: Promise<MotorsportEvent>;
@@ -27,16 +28,6 @@ export class EventdetailComponent implements OnInit {
         this.eventId = params['id']
       });
 
-      this.motorsportEvent = this.motorSportEventService.getEventById(this.eventId)
-        .then((res: Response) => res.json());
-
-      /*
-      this.motorsportEvent = new Promise(((resolve, reject) => {
-        setTimeout(()=> resolve("COMPLETE!"), 3000);
-      }))*/
-
-      /*.then((res: Response) =>
-        res.json());*/
   }
 
 }

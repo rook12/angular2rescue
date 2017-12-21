@@ -3,9 +3,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import {MotorsportEvent} from "../events/events.component";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MotorsporteventService} from "../../services/motorsportevent/motorsportevent.service";
 import {Observable} from "rxjs/Observable";
+import {Response} from "@angular/http";
 
 @Component({
   selector: 'app-eventedit',
@@ -14,37 +15,32 @@ import {Observable} from "rxjs/Observable";
 })
 export class EventeditComponent implements OnInit {
 
-
-
   rescueUnits = ['Rescue11test', 'Rescue12test', 'Rescue14test']
 
   submitted = false;
 
-  errorMessage: String;
-  observableMotorsportEvent: Observable<Object>;
-  motorsportEvent: Object;
+  isDataAvailable:boolean = false;
 
+  motorsportEvent: null;
   eventId: string;
 
 
   onSubmit() {
     this.submitted = true;
 
-    this.motorSportEventService.updateEvent(this.eventId, this.motorsportEvent);
+    this.motorSportEventService.updateEvent(this.eventId, this.motorsportEvent)
+      .then(value => {
+        console.log(">>>>>>>>>>>>Submitted! - " + value.json().message);
+        this.router.navigate(["/event-detail/" + this.eventId]);
+      })
 
-    console.log(">>>>>>>>>>>>Submitted!")
+      .catch(reason => {console.error(reason)})
+
+
   }
 
-  //get diagnostic() { return JSON.stringify(this.motorsportEvent)}
-
-  /*constructor() {
-    this.motorsportEvent.name = 'aaaaa';
-    this.motorsportEvent.crewRequired = 4;
-    this.motorsportEvent.unitsRequired = 2;
-
-  }*/
-
-  constructor(private motorSportEventService: MotorsporteventService, private route: ActivatedRoute) {
+  constructor(private motorSportEventService: MotorsporteventService, private route: ActivatedRoute, private router: Router) {
+    this.router = router;
     this.route
       .params
       .subscribe(params => {
@@ -54,12 +50,13 @@ export class EventeditComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-   /* this.observableMotorsportEvent = this.motorSportEventService.getEventById(this.eventId);
-    this.observableMotorsportEvent.subscribe(
-      resp => this.motorsportEvent = resp,
-      error => this.errorMessage = <any>error
-    )*/
+  ngOnInit(): void {
+    this.motorSportEventService.getEventById(this.eventId)
+      .then((res: Response) => {
+          this.motorsportEvent = res.json();
+          this.isDataAvailable = true;
+        }
+      );
   }
 
 }

@@ -15,14 +15,13 @@ export class MotorsporteventService {
     return this.http.get("/api/event/" + eventId).toPromise();
   }
 
-  updateEvent(eventId: string, motorsportEvent: Object): Observable<Response> {
+  updateEvent(eventId: string, motorsportEvent: Object): Promise<Response> {
     console.log("1................")
     console.log("2................")
     let url = "/api/event/" + eventId
     console.log("url - " + url)
-    let resp = this.http.put(url, motorsportEvent);
-    console.log("resp - " + resp)
-    return resp;
+
+    return this.http.put(url, motorsportEvent).toPromise();
 
   }
 

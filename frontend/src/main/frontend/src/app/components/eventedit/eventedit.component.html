@@ -7,54 +7,62 @@
 
 </p>-->
 <div class="container">
-  <h1>Edit Event</h1>
-  <!--Bind the form's ngSubmit to the onSubmit method-->
-  <form #eventEditForm="ngForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name"
-             required
-             [(ngModel)]="motorsportEvent.name" name="name"
-      #name="ngModel">
-      <br/>
-      <div [hidden]="name.valid || name.pristine"
-           class="alert alert-danger">
-        Name is required
+
+  <ng-template #other_content>loading event editor...</ng-template>
+
+  <div *ngIf="isDataAvailable;else other_content">
+
+    <h1>Edit Event {{ motorsportEvent.name}}</h1>
+    <!--Bind the form's ngSubmit to the onSubmit method-->
+    <form #eventEditForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="motorsportEvent.name" name="name"
+        #name="ngModel">
+        <br/>
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
+        </div>
+
+        <p>TODO: remove this: {{motorsportEvent.name}}</p>
       </div>
 
-      <p>TODO: remove this: {{motorsportEvent.name}}</p>
-    </div>
+      <div class="form-group">
+        <label for="unitsRequired">Units required</label>
+        <input type="number" class="form-control" id="unitsRequired"
+               required
+               [(ngModel)]="motorsportEvent.unitsRequired" name="unitsRequired">
+        <br/>
+        <p>TODO: remove this: {{motorsportEvent.unitsRequired}}</p>
+      </div>
 
-    <div class="form-group">
-      <label for="unitsRequired">Units required</label>
-      <input type="number" class="form-control" id="unitsRequired"
-             required
-             [(ngModel)]="motorsportEvent.unitsRequired" name="unitsRequired">
-      <br/>
-      <p>TODO: remove this: {{motorsportEvent.unitsRequired}}</p>
-    </div>
+      <div class="form-group">
+        <label for="crewRequired">Crew required</label>
+        <input type="number" class="form-control" id="crewRequired"
+               required
+               [(ngModel)]="motorsportEvent.crewRequired" name="crewRequired">
+        <br/>
+        <p>TODO: remove this: {{motorsportEvent.crewRequired}}</p>
+      </div>
 
-    <div class="form-group">
-      <label for="crewRequired">Crew required</label>
-      <input type="number" class="form-control" id="crewRequired"
-             required
-             [(ngModel)]="motorsportEvent.crewRequired" name="crewRequired">
-      <br/>
-      <p>TODO: remove this: {{motorsportEvent.crewRequired}}</p>
-    </div>
+      <div class="form-group">
+        <label for="rescueunit">Unit selection</label>
+        <select class="form-control" id="rescueunit" required>
+          <option *ngFor="let unit of rescueUnits" [value]="unit">{{unit}}</option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <label for="rescueunit">Unit selection</label>
-      <select class="form-control" id="rescueunit" required>
-        <option *ngFor="let unit of rescueUnits" [value]="unit">{{unit}}</option>
-      </select>
-    </div>
+      <button type="submit" class="btn btn-success" [disabled]="!eventEditForm.form.valid">Submit</button>
 
-    <button type="submit" class="btn btn-success" [disabled]="!eventEditForm.form.valid">Submit</button>
+       <button routerLink="/event-detail/{{eventId}}" type="submit" class="btn btn-primary" >
+         Cancel
+       </button>
 
-     <button routerLink="/event-detail/{{eventId}}" type="submit" class="btn btn-primary" >
-       Cancel
-     </button>
+    </form>
 
-  </form>
+  </div>
+
 </div>

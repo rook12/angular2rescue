@@ -99,10 +99,10 @@ public class MotorsportEventController {
 
         if(updatedFields.size() > 0) {
             motorsportEventRepository.save(motorsportEvent);
-            return ResponseEntity.ok(String.format("event updated fields [%s] ", String.join(", ", updatedFields)));
+            return ResponseEntity.ok(String.format("{\"message\":\"event updated fields [%s] \"}", String.join(", ", updatedFields)));
         }
         else {
-            return ResponseEntity.ok("no changes detected");
+            return ResponseEntity.ok("{\"message\":\"no changes detected\"}");
         }
 
 
