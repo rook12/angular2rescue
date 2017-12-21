@@ -98,7 +98,7 @@ public class MotorsportEventController {
         }
 
         if(updatedFields.size() > 0) {
-            motorsportEventRepository.save(motorsportEvent);
+            motorsportEventRepository.save(existingEvent);
             return ResponseEntity.ok(String.format("{\"message\":\"event updated fields [%s] \"}", String.join(", ", updatedFields)));
         }
         else {
