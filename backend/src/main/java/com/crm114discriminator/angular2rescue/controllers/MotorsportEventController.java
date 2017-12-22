@@ -97,6 +97,26 @@ public class MotorsportEventController {
             updatedFields.add("name");
         }
 
+        if(motorsportEvent.getUnitsRequired() != null && !motorsportEvent.getUnitsRequired().equals(existingEvent.getUnitsRequired())) {
+            existingEvent.setUnitsRequired(motorsportEvent.getUnitsRequired());
+            updatedFields.add("unitsrequired");
+        }
+
+        if(motorsportEvent.getCrewRequired() != null && !motorsportEvent.getCrewRequired().equals(existingEvent.getCrewRequired())) {
+            existingEvent.setCrewRequired(motorsportEvent.getCrewRequired());
+            updatedFields.add("crewrequired");
+        }
+
+        if(motorsportEvent.getStartDate() != null && !motorsportEvent.getStartDate().equals(existingEvent.getStartDate())) {
+            existingEvent.setStartDate(motorsportEvent.getStartDate());
+            updatedFields.add("startdate");
+        }
+
+        if(motorsportEvent.getEndDate() != null && !motorsportEvent.getEndDate().equals(existingEvent.getEndDate())) {
+            existingEvent.setEndDate(motorsportEvent.getEndDate());
+            updatedFields.add("enddate");
+        }
+
         if(updatedFields.size() > 0) {
             motorsportEventRepository.save(existingEvent);
             return ResponseEntity.ok(String.format("{\"message\":\"event updated fields [%s] \"}", String.join(", ", updatedFields)));
@@ -153,8 +173,8 @@ public class MotorsportEventController {
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody String addNewEvent(
             @RequestParam String name,
-            @RequestParam @DateTimeFormat(pattern = "ddmmyyyy") Date startDate,
-            @RequestParam @DateTimeFormat(pattern = "ddmmyyyy") Date endDate,
+            @RequestParam @DateTimeFormat(pattern = "ddMMyyyy") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "ddMMyyyy") Date endDate,
             @RequestParam Integer crewRequired,
             @RequestParam Integer unitsRequired
             ) {

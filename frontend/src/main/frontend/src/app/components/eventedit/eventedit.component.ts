@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
 import {MotorsportEvent} from "../events/events.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MotorsporteventService} from "../../services/motorsportevent/motorsportevent.service";
-import {Observable} from "rxjs/Observable";
 import {Response} from "@angular/http";
 
 @Component({
   selector: 'app-eventedit',
+
   templateUrl: './eventedit.component.html',
   styleUrls: ['./eventedit.component.css']
 })
@@ -19,9 +19,11 @@ export class EventeditComponent implements OnInit {
 
   submitted = false;
 
+  dateValue:Date = new Date(1485562200000);
+
   isDataAvailable:boolean = false;
 
-  motorsportEvent: null;
+  motorsportEvent:MotorsportEvent = null;
   eventId: string;
 
 
@@ -53,7 +55,7 @@ export class EventeditComponent implements OnInit {
   ngOnInit(): void {
     this.motorSportEventService.getEventById(this.eventId)
       .then((res: Response) => {
-          this.motorsportEvent = res.json();
+          this.motorsportEvent = new MotorsportEvent().deserialise(res.json());
           this.isDataAvailable = true;
         }
       );

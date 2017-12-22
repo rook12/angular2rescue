@@ -44,6 +44,20 @@ export class MotorsportEvent {
   constructor() {
   }
 
+  deserialise(input) : MotorsportEvent {
+    this.id = input.id;
+    this.name = input.name;
+    this.unitsRequired = input.unitsRequired;
+    this.crewRequired = input.crewRequired;
+    this.startDate = new Date(input.startDate);
+    this.endDate = new Date(input.endDate);
+    return this;
+  }
+
+  /*build(jsonResponse:object) {
+    jsonResponse.id
+  }*/
+
   /*setName(name: string) {
     this.name = name;
   }*/

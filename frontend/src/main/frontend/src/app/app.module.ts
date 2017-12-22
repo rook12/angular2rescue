@@ -19,6 +19,9 @@ import {MotorsporteventService} from "./services/motorsportevent/motorsportevent
 import { EventdetailComponent } from './components/eventdetail/eventdetail.component';
 import { EventeditComponent } from './components/eventedit/eventedit.component';
 import {FormsModule} from "@angular/forms";
+import {CalendarModule} from "primeng/primeng";
+import {BrowserAnimationBuilder} from "@angular/platform-browser/animations/src/animation_builder";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   //the view classes that belong to this module. Angular has three kinds of view classes: components, directives, and pipes.
@@ -41,7 +44,9 @@ import {FormsModule} from "@angular/forms";
     NgbModule.forRoot(),
     NgbCollapseModule.forRoot(),
     HttpModule,
-    FormsModule
+    FormsModule,
+    CalendarModule,
+    BrowserAnimationsModule
   ],
 
   //creators of services that this module contributes to the global collection of services; they become accessible in all parts of the app.

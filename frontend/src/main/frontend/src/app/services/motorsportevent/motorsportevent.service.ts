@@ -15,7 +15,7 @@ export class MotorsporteventService {
     return this.http.get("/api/event/" + eventId).toPromise();
   }
 
-  updateEvent(eventId: string, motorsportEvent: Object): Promise<Response> {
+  updateEvent(eventId: string, motorsportEvent: MotorsportEvent): Promise<Response> {
     console.log("1................")
     console.log("2................")
     let url = "/api/event/" + eventId

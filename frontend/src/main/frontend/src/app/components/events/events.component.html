@@ -9,7 +9,7 @@
 
       <!--<a routerLink="/units" class="nav-link" routerLinkActive="active">Units</a>-->
       <a routerLink="/event-detail/{{response.motorsportEventId}}">Link</a>
-      Property: {{response.name}} {{response.crewRequired}} {{response.unitsRequired}} {{response.startDate}} {{response.endDate}}
+      Property: {{response.name}} {{response.crewRequired}} {{response.unitsRequired}} Start Date {{response.startDate | date }} End date {{response.endDate | date}}
     </li>
 </ul>
 

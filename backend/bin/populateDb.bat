@@ -1,4 +1,4 @@
-call curl -d "name=event231231&startDate=28102017&endDate=28102017&crewRequired=3&unitsRequired=1" -X POST http://localhost:8080/api/event/add
+call curl -d "name=event1&startDate=28102017&endDate=28102017&crewRequired=3&unitsRequired=1" -X POST http://localhost:8080/api/event/add
 call curl -d "name=event2&startDate=29102017&endDate=29102017&crewRequired=6&unitsRequired=2" -X POST http://localhost:8080/api/event/add
 call curl -d "name=event3&startDate=01112017&endDate=04112017&crewRequired=2&unitsRequired=1" -X POST http://localhost:8080/api/event/add
 call curl -d "name=event4&startDate=04112017&endDate=07112017&crewRequired=2&unitsRequired=1" -X POST http://localhost:8080/api/event/add
