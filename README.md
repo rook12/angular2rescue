@@ -14,6 +14,7 @@
 
 # Next thing to do
 
+* 22-12-17 Check commit message. Next work on unit and crew picker for form. Look at making the form reusable for the upcoming new event screen.
 * 21-12-17 Got debugger working (choose Browser Debug). Got editor working. Changed controller and event service to work around promises. Next expand editor to cover all fields. 
 * 03-12-17 Work on getting NPM/JS debugger to work. Connection refused. Read into using promises instead of observable to simplify things
 * 02-12-17 Got to submit stage, create a unit test for the Angular service that will do the update
