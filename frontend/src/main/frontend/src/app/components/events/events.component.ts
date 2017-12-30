@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs/Observable";
 //import {MotorsportEvent} from "./motorsportevent";
 import {MotorsporteventService} from "../../services/motorsportevent/motorsportevent.service";
+import {ICrew} from "../../interfaces/crew";
 
 /*Example for subscribing to new events being added
 https://www.concretepage.com/angular-2/angular-2-http-get-example*/
@@ -40,6 +41,7 @@ export class MotorsportEvent {
   endDate: Date;
   links: Object[];
   motorsportEventId: number;
+  crew: ICrew[] = [];
 
   constructor() {
   }
@@ -51,6 +53,11 @@ export class MotorsportEvent {
     this.crewRequired = input.crewRequired;
     this.startDate = new Date(input.startDate);
     this.endDate = new Date(input.endDate);
+
+    for(var i in input.crew) {
+      this.crew.push({id: input.crew[i].crewMemberId, name:input.crew[i].firstName + ' ' + input.crew[i].lastName});
+    }
+
     return this;
   }
 

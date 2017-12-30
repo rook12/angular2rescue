@@ -1,5 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RescueRootAppComponent } from './app.component';
+import {RouterModule} from "@angular/router";
+
 describe('RescueRootAppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({

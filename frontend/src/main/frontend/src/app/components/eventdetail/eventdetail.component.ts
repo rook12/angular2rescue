@@ -13,6 +13,9 @@ import {reject} from "q";
   styleUrls: ['./eventdetail.component.css']
 })
 export class EventdetailComponent implements OnInit {
+
+  public editRouterLink = "/event-edit";
+
   ngOnInit(): void {
     this.motorsportEvent = this.motorSportEventService.getEventById(this.eventId)
       .then((res: Response) => res.json());

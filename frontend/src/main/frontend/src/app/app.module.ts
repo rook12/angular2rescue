@@ -19,9 +19,10 @@ import {MotorsporteventService} from "./services/motorsportevent/motorsportevent
 import { EventdetailComponent } from './components/eventdetail/eventdetail.component';
 import { EventeditComponent } from './components/eventedit/eventedit.component';
 import {FormsModule} from "@angular/forms";
-import {CalendarModule} from "primeng/primeng";
+import {CalendarModule, MultiSelectModule} from "primeng/primeng";
 import {BrowserAnimationBuilder} from "@angular/platform-browser/animations/src/animation_builder";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CrewService} from "./services/crew/crew.service";
 
 @NgModule({
   //the view classes that belong to this module. Angular has three kinds of view classes: components, directives, and pipes.
@@ -46,13 +47,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HttpModule,
     FormsModule,
     CalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MultiSelectModule
   ],
 
   //creators of services that this module contributes to the global collection of services; they become accessible in all parts of the app.
   //Things in here can then be injected into classes that require them as dependencies (can also do in the components)
   //Gets injected through component constructor, eg constructor(private service: HeroService) { }
-  providers: [MotorsporteventService],
+  providers: [MotorsporteventService, CrewService],
 
   //the main application view, called the root component, that hosts all other app views. Only the root module should set this bootstrap property.
   bootstrap: [RescueRootAppComponent]

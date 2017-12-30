@@ -9,10 +9,13 @@
 </div>
 
 <hr/>
-<button routerLink="/event-edit/{{eventId}}" type="submit" class="btn btn-primary" >
+<!--<button routerLink="/event-edit/{{eventId}}" type="submit" class="btn btn-primary" >
+  Edit
+</button>-->
+<button [routerLink]="[editRouterLink,eventId]" type="submit" class="btn btn-primary" >
   Edit
 </button>
-<button [routerLink]="'/events'" type="submit" class="btn btn-primary" >
+<button routerLink="/events" type="submit" class="btn btn-primary" >
   Back to Events
 </button>
 <hr/>

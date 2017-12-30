@@ -76,6 +76,11 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label for="crewSelection">Crew selection</label>
+        <p-multiSelect [options]="crew" [(ngModel)]="selectedCrew" id="crewSelection" name="crewSelection" optionLabel="name"></p-multiSelect>
+      </div>
+
       <button type="submit" class="btn btn-success" [disabled]="!eventEditForm.form.valid">Submit</button>
 
        <button routerLink="/event-detail/{{eventId}}" type="submit" class="btn btn-primary" >

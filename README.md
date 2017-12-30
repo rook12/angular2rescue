@@ -5,6 +5,7 @@
 * Routing - https://angular.io/guide/router
 * HATEOAS API linking - http://www.baeldung.com/spring-hateoas-tutorial
 * Angular HTTP GET - https://www.concretepage.com/angular-2/angular-2-http-get-example
+* Organising application - https://medium.com/@amcdnl/organizing-your-angular-application-2694ff67d335
 
 # Starting up for DEV
 
