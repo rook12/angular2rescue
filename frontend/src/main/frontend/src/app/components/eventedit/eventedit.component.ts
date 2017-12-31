@@ -32,13 +32,25 @@ export class EventeditComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    this.motorSportEventService.updateEvent(this.eventId, this.motorsportEvent)
+    var p1 = this.motorSportEventService.updateEvent(this.eventId, this.motorsportEvent)
       .then(value => {
         console.log(">>>>>>>>>>>>Submitted! - " + value.json().message);
+      })
+      .catch(reason => {console.error(reason)})
+
+
+    //Look for differences in the crew selection from when the page was loaded.
+    //this.motorsportEvent.crew will contain the list that was in place at the start
+    //this.selectedCrew will be the latest seleciton
+    //Build a map of who's been removed and another of who's been added, then call the respective add/remove methods
+
+
+    Promise.all([p1])
+      .then(value => {
+        console.log("all promises fulfilled, go back to event detail");
         this.router.navigate(["/event-detail/" + this.eventId]);
       })
 
-      .catch(reason => {console.error(reason)})
 
 
   }
