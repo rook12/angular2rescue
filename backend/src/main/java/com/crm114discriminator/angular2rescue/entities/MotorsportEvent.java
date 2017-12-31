@@ -42,6 +42,10 @@ public class MotorsportEvent extends ResourceSupport {
         this.crew.add(crewMember);
     }
 
+    public void removeCrewMember(CrewMember crewMember) {
+        this.crew.removeIf((CrewMember cm) -> cm.getCrewMemberId().equals(crewMember.getCrewMemberId()));
+    }
+
     public Integer getMotorsportEventId() {
         return id;
     }

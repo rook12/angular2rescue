@@ -151,6 +151,22 @@ public class MotorsportEventController {
         return ResponseEntity.ok(String.format("added crew member with id - %s. total crew members - %s", crewMemberId, motorsportEvent.getCrew().size() ));
     }
 
+    @DeleteMapping(path="/{eventid}/crew/{crewmemberid}")
+    public ResponseEntity<?> removeCrewMemberFromEvent(
+            @PathVariable(value="eventid") String eventId,
+            @PathVariable(value="crewmemberid") String crewMemberId) {
+        MotorsportEvent motorsportEvent = motorsportEventRepository.findById(Integer.parseInt(eventId));
+        CrewMember cm = crewMemberRepository.findById(Integer.parseInt(crewMemberId));
+        if (cm == null) {
+            throw new IllegalArgumentException("could not find crew member with id "  + crewMemberId);
+        }
+        motorsportEvent.removeCrewMember(cm);
+        motorsportEventRepository.save(motorsportEvent);
+
+        return ResponseEntity.ok(String.format("removed crew member %s with id - %s. total crew members - %s", cm.getFirstName() + ' ' + cm.getLastName(), crewMemberId, motorsportEvent.getCrew().size() ));
+
+    }
+
     @PostMapping(path="/{eventid}")
     public @ResponseBody MotorsportEvent updateEvent(
             @RequestBody MotorsportEvent motorsportEvent,
